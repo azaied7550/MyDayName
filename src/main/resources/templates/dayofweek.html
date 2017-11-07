@@ -11,19 +11,38 @@
     <title>Title</title>
 </head>
 <body>
+
 <div class="container">
     <h1><p th:inline="text"> The day corresponding to your date is: [[${dateval}]].</p></h1>
     <div class="row">
         <div class="col-md-12">
-        <div class="col-md-6">
-            <p th:inline="text"> The female name is [[${femaleval}]].</p>
+                <div th:if="${femaleval} == null">
+
+                <p th:inline="text" class="well"> The male name is [[${maleval}]].</p>
+                    <p th:inline="text" class="well">you are [[${characterval}]].</p>
+
+            </div>
+
+            <div th:if="${maleval} == null">
+            <p th:inline="text" class="well"> The female name is [[${femaleval}]].</p>
+                <p th:inline="text" class="well">you are [[${characterval}]].</p>
+            </div>
+
         </div>
-        <div class="col-md-6">
-            <p th:inline="text"> The male name is [[${maleval}]].</p>
+            <div class="col-md-12">
+            <div th:if="${femaleval} != null">
+                <div th:if="${maleval} != null">
+                    <p th:inline="text" class="well"> The male name is [[${maleval}]].</p>
+                    <p th:inline="text" class="well"> The female name is [[${femaleval}]].</p>
+                    <p th:inline="text" class="well">you are [[${characterval}]].</p>
+                </div>
+            </div>
+            </div>
         </div>
-        </div>
-    </div>
+
+
 </div>
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
